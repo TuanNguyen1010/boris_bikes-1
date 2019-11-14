@@ -18,25 +18,33 @@ describe DockingStation do
 
     it "checks if the bike has been docked" do
       station = DockingStation.new
-      bike1 = Bike.new
-      expect(station.dock(bike1)).to eq(bike1)
+      expect(station.dock(Bike.new)).to eq(1)
     end
 
     it "checks attr_reader fuction" do
       station = DockingStation.new
       bike1 = Bike.new
       station.dock(bike1)
-      expect(station.bike).to eq(bike1)
+      expect(station.bike_arr).to eq([bike1])
     end
 
     it "raises an error if trying to dock a bike when the docking station already has 1 bike" do
       station = DockingStation.new
-      bike1 = Bike.new
-      station.dock(bike1)
-      bike2 = Bike.new
-      expect{ station.dock(bike2) }.to raise_error
+      station.dock(Bike.new)
+      expect{ 21.times {station.dock(Bike.new)}}.to raise_error
     end
 
+    it "should be able to dock a second bike" do
+      station = DockingStation.new
+      expect(2.times {station.dock(Bike.new)}).to eq(2)
+    end
+
+    it "should be able to dock 20 bikes at Docking station" do
+      station = DockingStation.new
+      expect(20.times {station.dock(Bike.new)}).to eq(20)
+    end
+
+    
   end
 
 
