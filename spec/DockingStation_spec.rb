@@ -28,6 +28,15 @@ describe DockingStation do
       station.dock(bike1)
       expect(station.bike).to eq(bike1)
     end
+
+    it "raises an error if trying to dock a bike when the docking station already has 1 bike" do
+      station = DockingStation.new
+      bike1 = Bike.new
+      station.dock(bike1)
+      bike2 = Bike.new
+      expect{ station.dock(bike2) }.to raise_error
+    end
+
   end
 
 
