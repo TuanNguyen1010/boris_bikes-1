@@ -33,18 +33,6 @@ describe DockingStation do
       station.dock(Bike.new)
       expect{ 21.times {station.dock(Bike.new)}}.to raise_error
     end
-
-    it "should be able to dock a second bike" do
-      station = DockingStation.new
-      expect(2.times {station.dock(Bike.new)}).to eq(2)
-    end
-
-    it "should be able to dock 20 bikes at Docking station" do
-      station = DockingStation.new
-      expect(20.times {station.dock(Bike.new)}).to eq(20)
-    end
-
-    
   end
 
 
