@@ -1,8 +1,13 @@
 require "docking_station.rb"
 describe DockingStation do
   describe "#release_bike" do
-    it "release bike" do
+    it "release bike new bike" do
       expect(subject).to respond_to(:release_bike)
+    end
+
+    it "raise an erorr when there is no bike docked" do
+      station = DockingStation.new
+      expect{station.release_bike}.to raise_error
     end
   end
   describe "#dock" do
