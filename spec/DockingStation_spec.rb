@@ -2,6 +2,18 @@ require "docking_station.rb"
 require "Bike.rb"
 
 describe DockingStation do
+  describe "#new" do
+    it "should have default capacity of 20" do
+      station = DockingStation.new
+      expect(station.capacity).to eq(DockingStation::DEFAULT_CAPACITY)
+    end
+
+    it "should accept new value as the capacity" do
+      station = DockingStation.new(36)
+      expect(station.capacity).to eq(36)
+    end
+  end
+
   describe "#release_bike" do
     it "checking if the release bike new bike works" do
       expect(subject).to respond_to(:release_bike)
