@@ -12,6 +12,7 @@ describe DockingStation do
       expect{station.release_bike}.to raise_error "no bike available"
     end
   end
+
   describe "#dock" do
     it "docks the bike at docking station" do
       bike = DockingStation.new
@@ -33,9 +34,8 @@ describe DockingStation do
     it "raises an error if trying to dock a bike when the docking station already has 1 bike" do
       station = DockingStation.new
       station.dock(Bike.new)
-      expect{ 21.times {station.dock(Bike.new)}}.to raise_error "dock is full"
+      x = DockingStation::DEFAULT_CAPACITY
+      expect{ x.times {station.dock(Bike.new)}}.to raise_error "dock is full"
     end
   end
-
-
 end
