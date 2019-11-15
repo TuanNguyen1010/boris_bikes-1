@@ -1,4 +1,4 @@
-require "docking_station"
+require "Bike"
 
 describe Bike do
   it "Check if bike is working" do

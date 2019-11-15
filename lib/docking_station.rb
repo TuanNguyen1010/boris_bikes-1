@@ -6,25 +6,22 @@ class DockingStation
   end
 
   def release_bike
-      if @bike_arr.length > 0
-        @bike_arr.pop
-      else
-        fail "no bike available"
-      end
+    fail "no bike available" if empty?
+    @bike_arr.pop
   end
 
   def dock(bike)
-    if @bike_arr.length < 21
-      @bike_arr<< bike
-      return @bike_arr.length
-    else
-      fail "dock is full"
-    end
+    fail "dock is full" if full?
+    @bike_arr<< bike
+    @bike_arr.length
   end
 
-end
+  private
+  def full?
+    @bike_arr.length >= 20
+  end
 
-class Bike
-  def working?
+  def empty?
+    @bike_arr.empty?
   end
 end
