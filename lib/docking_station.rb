@@ -10,12 +10,14 @@ class DockingStation
 
   def release_bike
     fail "no bike available" if empty?
+    fail "no working bike available" unless @bike_arr.any? { |bike| bike.working? }
     @bike_arr.pop
   end
 
-  def dock(bike)
+  def dock(bike, options = {broken: false})
     fail "dock is full" if full?
-    @bike_arr<< bike
+    puts "Thanks for reporting" if options[:broken]
+    @bike_arr << bike
     @bike_arr.length
   end
 
